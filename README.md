@@ -32,6 +32,8 @@ The following diagram illustrates the fully automated pipeline workflow that is 
 | **NGINX** | High-performance web server that serves the static files. |
 | **GitHub Actions** | Automated CI/CD platform that executes the pipeline. |
 
+<img width="1024" height="659" alt="image" src="https://github.com/user-attachments/assets/da1416fc-48b1-41cb-8a98-2aab08b6a584" />
+
 ---
 
 ## 📂 Project Structure
@@ -44,4 +46,3 @@ The following diagram illustrates the fully automated pipeline workflow that is 
 ├── Dockerfile          # Instructions to create the NGINX image
 └── README.md           # Documentation (You are reading this)
 
-<img width="1024" height="659" alt="image" src="https://github.com/user-attachments/assets/d547dc6c-85f1-4ac1-a6a3-e10ee9df4b9b" />
