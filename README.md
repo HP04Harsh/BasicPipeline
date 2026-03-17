@@ -1,137 +1,47 @@
-# 🌐 Gondia Static Website Deployment with GitHub Actions
+# 🌐 Gondia Directory: Automated CI/CD Pipeline
 
-This project demonstrates a **simple DevOps CI/CD pipeline** that deploys a static website using **Docker and NGINX** through **GitHub Actions**.
+This project demonstrates a streamlined **DevOps pipeline** for a static web application. It automates the entire process of building, containerizing, and testing a directory site for **Gondia, Maharashtra** using **Docker**, **NGINX**, and **GitHub Actions**.
 
-The website contains basic information about **Gondia, Maharashtra**, and is automatically built and deployed inside a container whenever code is pushed to the repository.
+The main goal is to showcase an "Infrastructure as Code" approach where every code change is automatically verified through a pipeline before deployment.
+
+---
+
+## 🏗 System Architecture & Workflow
+
+The following diagram illustrates the fully automated pipeline workflow that is executed every time code is pushed to the `main` branch. It visualizes the logic in your [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) file.
+
+
+
+### Detailed Workflow Description
+
+1.  **Trigger:** A developer pushes changes to the `main` branch.
+2.  **Pipeline Activation:** GitHub Actions detects the push and starts the defined workflow (`deploy.yml`).
+3.  **Docker Build:** The pipeline uses the `Dockerfile` to create a new, updated Docker image containing your `index.html`.
+4.  **Health Check:** It then spins up the new NGINX container.
+5.  **Automated Verification:** The workflow executes a `curl` test (`curl localhost:8080`) to confirm the web server is successfully responding with a `200 OK` status.
+6.  **Status Report:** If the test passes, the pipeline completes successfully. If it fails, you are notified of the error.
 
 ---
 
 ## 🚀 Tech Stack
 
-* **HTML / CSS** – Static website
-* **Docker** – Containerization
-* **NGINX** – Web server to serve the static site
-* **GitHub Actions** – CI/CD pipeline
+| Technology | Purpose |
+| :--- | :--- |
+| **HTML5 / CSS3** | Frontend content for the Gondia Directory website. |
+| **Docker** | Containerization of the application and its environment. |
+| **NGINX** | High-performance web server that serves the static files. |
+| **GitHub Actions** | Automated CI/CD platform that executes the pipeline. |
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
-```
+```text
 .
-├── index.html
-├── Dockerfile
-└── .github
-    └── workflows
-        └── deploy.yml
-```
+├── .github/workflows/
+│   └── deploy.yml      # The CI/CD "brain" (Workflow Automation)
+├── index.html          # Main website file
+├── Dockerfile          # Instructions to create the NGINX image
+└── README.md           # Documentation (You are reading this)
 
----
-
-## ⚙️ How the Pipeline Works
-
-1. Developer pushes code to the `main` branch.
-2. GitHub Actions workflow is triggered.
-3. The repository is checked out.
-4. A Docker image is built using the `Dockerfile`.
-5. A container is started using NGINX.
-6. The static website is served from the container.
-7. A `curl` command verifies the website is accessible.
-
-Pipeline Flow:
-
-```
-GitHub Push
-     ↓
-GitHub Actions
-     ↓
-Docker Build
-     ↓
-NGINX Container
-     ↓
-Static Website Served
-```
-
----
-
-## 🐳 Docker Configuration
-
-The Dockerfile uses the official NGINX image and copies the static site into the web root.
-
-```
-FROM nginx:latest
-COPY index.html /usr/share/nginx/html/index.html
-EXPOSE 80
-```
-
----
-
-## 🔄 GitHub Actions Workflow
-
-The pipeline builds and runs the container automatically.
-
-Workflow location:
-
-```
-.github/workflows/deploy.yml
-```
-
-Main steps include:
-
-* Checkout repository
-* Build Docker image
-* Run NGINX container
-* Test site availability
-
----
-
-## 💻 Run Locally
-
-You can test the application locally using Docker.
-
-### Build Image
-
-```
-docker build -t gondia-static-site .
-```
-
-### Run Container
-
-```
-docker run -p 8080:80 gondia-static-site
-```
-
-### Open in Browser
-
-```
-http://localhost:8080
-```
-
----
-
-## 📌 Notes
-
-* The GitHub Actions runner runs inside a temporary virtual machine.
-* The website is tested inside the runner using `curl`.
-* To make the site publicly accessible, you would deploy it to a server or cloud platform.
-
----
-
-## 🎯 Purpose of This Project
-
-This project is created for learning and demonstrating:
-
-* Basic CI/CD pipelines
-* Docker containerization
-* Static site deployment using NGINX
-* GitHub Actions automation
-
----
-
-## 👨‍💻 Author
-
-Harsh Pardhi
-
----
-
-⭐ If you found this useful, feel free to star the repository!
+<img width="1024" height="659" alt="image" src="https://github.com/user-attachments/assets/d547dc6c-85f1-4ac1-a6a3-e10ee9df4b9b" />
